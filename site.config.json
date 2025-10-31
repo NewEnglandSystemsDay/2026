@@ -1,15 +1,15 @@
 {
   "eventName": "2026 New England Systems Day",
   "tagline": "A one-day workshop bringing together researchers and students in systems",
-  "date": "2026-01-24",
-  "dateHuman": "January 24, 2026",
-  "location": "Allston, MA",
+  "date": "2026-01-23",
+  "dateHuman": "January 23, 2026",
+  "location": "Harvard John A. Paulson School of Engineering and Applied Sciences, Allston, MA 02134",
   "timezone": "America/New_York",
   "contactEmail": "juncheng@seas.harvard.edu",
   "sponsorEmail": "juncheng@seas.harvard.edu",
-  "registrationUrl": "https://forms.gle/1234567890",
-  "venueMapUrl": "https://maps.google.com",
-  "cftSubmissionUrl": "https://forms.gle/1234567890",
+  "registrationUrl": "https://forms.gle/P1acpPJ5wGdpdrNb8",
+  "venueMapUrl": "https://maps.app.goo.gl/nm5RdG7Vtk4MyQtz8",
+  "cftSubmissionUrl": "https://nesd26.hotcrp.com/u/0/",
   "cftDeadlineHuman": "Dec 20, 2025 11:59pm EST",
   "mailingListUrl": "https://groups.google.com/g/newenglandsystemsday"
 }
