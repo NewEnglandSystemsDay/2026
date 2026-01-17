@@ -6,6 +6,34 @@
     <title>Program · 2026 New England Systems Day</title>
     <link rel="stylesheet" href="assets/css/style.css" />
     <script defer src="assets/js/main.js"></script>
+    <style>
+      details.talk-abstract {
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+      }
+      details.talk-abstract summary {
+        cursor: pointer;
+        color: #0066cc;
+        font-size: 0.9em;
+      }
+      details.talk-abstract summary:hover {
+        text-decoration: underline;
+      }
+      details.talk-abstract .abstract-content {
+        margin-top: 0.5em;
+        padding: 0.75em;
+        background: #f8f9fa;
+        border-left: 3px solid #0066cc;
+        font-size: 0.85em;
+        line-height: 1.5;
+      }
+      .session-chair {
+        font-size: 1em;
+        color: #555;
+        display: block;
+        line-height: 1.2;
+      }
+    </style>
   </head>
   <body>
     <div data-include="partials/header.html"></div>
@@ -34,16 +62,56 @@
         <div class="slot">
           <div class="slot__time">10:30 – 12:00</div>
           <div class="slot__desc">
-            <strong>Machine Learning Systems I</strong><br><small>Session Chair: Cheng Tan (Northeastern University)</small>
+            <strong>Machine Learning Systems I</strong><span class="session-chair">Session Chair: Cheng Tan (Northeastern University)</span><br>
             <ul>
-              <li><strong>Efficient LLM Systems: From Algorithm Design to Deployment</strong><br><small>Rana Shahout (Harvard University)</small></li>
-              <li><strong>From Research to Production: How vLLM Semantic Router Enables Scalable, Cost-Efficient Multi-Model Inference</strong><br><small>Huamin Chen (Red Hat)</small></li>
-              <li><strong>Reducing Excess in Generation: Energy-Efficient Optimization for Large Language Models</strong><br><small>Dawei Xiang, Jianchang Su, Wenyan Xu, Kexin Chu, Zixu Shen, Yifan Zhang, Tianqi Ding, Runxin Wu, Wei Zhang (University of Connecticut, Central University of Finance and Economics, Baylor)</small></li>
-              <li><strong>Haven: Safe Tools for AI Agents</strong><br><small>Justus Adam, Yuchen Lu, Alexandre Doukhan, Deepti Raghavan, Malte Schwarzkopf (Brown University, EPFL)</small></li>
-              <li><strong>ShadowServe: Interference-Free KV Cache Fetching for Distributed Prefix Caching</strong><br><small>Xingyu Xiang (Harvard University)</small></li>
-              <li><strong>Enabling Practical Transparent Checkpointing in HPC</strong><br><small>Yao Xu, Gene Cooperman (Northeastern University)</small></li>
-              <li><strong>Space Efficient Mapping Structures for Learned Indexes</strong><br><small>Anwesha Saha, Aneesh Raman, Ryan Marcus, Manos Athanassoulis (Boston University, University of Pennsylvania)</small></li>
-              <li><strong>Beyond the GPU Era: A Quantitative View of AI Accelerators</strong><br><small>Alicia Golden, Carole-Jean Wu, Gu-Yeon Wei, David Brooks (Harvard University, Meta)</small></li>
+              <li><strong>Efficient LLM Systems: From Algorithm Design to Deployment</strong><br><small>Rana Shahout (Harvard University)</small>
+                <details class="talk-abstract">
+                  <summary>Abstract</summary>
+                  <div class="abstract-content">Large Language Models (LLMs) have transformed what machines can do and how systems are designed to serve them. These models are both computationally and memory demanding, revealing the limits of traditional optimization methods that once sufficed for conventional systems. A central challenge in building LLM systems is improving system metrics while ensuring response quality. This talk presents approaches for reducing latency in LLM systems to support interactive applications, from scheduling algorithm design to deployment. It introduces scheduling frameworks that use lightweight predictions of request behavior to make informed decisions about prioritization and memory management across two core settings: standalone LLM inference and API-augmented LLMs that interact with external tools. Across both settings, prediction-guided scheduling delivers substantial latency reductions while remaining practical for deployment.</div>
+                </details>
+              </li>
+              <li><strong>From Research to Production: How vLLM Semantic Router Enables Scalable, Cost-Efficient Multi-Model Inference</strong><br><small>Huamin Chen (Red Hat)</small>
+                <details class="talk-abstract">
+                  <summary>Abstract</summary>
+                  <div class="abstract-content">As organizations move from experimenting with large language models to building real products, one challenge keeps resurfacing: how do you route each request to the right model without adding latency, cost, or complexity? The vLLM Semantic Router began as a small research prototype for classification-based intent detection and LLM model selection, but it has since evolved into a full routing layer that connects retrieval, prompt optimization, guardrails, and multi-model selection into a single, production-ready pipeline. In this talk, I'll show how the system works, why routing matters, and what we learned while turning an academic idea into an actual, scalable component deployed in real applications. I'll also highlight open research questions, such as prompt ensemble routing, semantic caching, and hybrid retrieval-and-generation design that the community can build on.</div>
+                </details>
+              </li>
+              <li><strong>Reducing Excess in Generation: Energy-Efficient Optimization for Large Language Models</strong><br><small>Dawei Xiang, Jianchang Su, Wenyan Xu, Kexin Chu, Zixu Shen, Yifan Zhang, Tianqi Ding, Runxin Wu, Wei Zhang (University of Connecticut, Central University of Finance and Economics, Baylor)</small>
+                <details class="talk-abstract">
+                  <summary>Abstract</summary>
+                  <div class="abstract-content">With the rapid growth of Large Language Models (LLMs), their usage in machine learning applications has increased dramatically, which also poses a significant challenge on the energy side. In this paper, we show that current LLMs have exceeding output complexity and output speed that have limited improvement on user experience but consume much more energy. Therefore we propose a novel energy-saving optimization framework for LLM clusters that can automatically choose the best output complexity and generation speed while maintaining output quality and saving energy. Unlike previous approaches that focus solely on output speed or output complexity, our optimization model optimize on these two factors simultaneously. To accurately estimate the complexity requirements for each request, we also propose a lightweight classification model designed to infer the best output complexity, thereby minimizing redundant computation and enable a fine-grained request-level scheduling. Our experiments demonstrate that our approach can achieve a 52.72% reduction in energy consumption compared to non-optimized framework.</div>
+                </details>
+              </li>
+              <li><strong>Haven: Safe Tools for AI Agents</strong><br><small>Justus Adam, Yuchen Lu, Alexandre Doukhan, Deepti Raghavan, Malte Schwarzkopf (Brown University, EPFL)</small>
+                <details class="talk-abstract">
+                  <summary>Abstract</summary>
+                  <div class="abstract-content">Agentic AI applications increasingly interface third-party tool code. AI agents blindly trust that third-party tool documentation accurately describes the tool's behavior. This risks violations of data privacy and security, as negligent or malicious tools could leak or misuse user data. Haven is a new system that protects against unwanted behavior of tool code. Haven's static analysis captures a complete picture of a tool's side-effects, such as how it accesses the network and file system. Haven's policy engine uses this information to allow or deny use of a tool. When static analysis is insufficient, developers can opt to use fine-grained sandboxes, that Haven verifies to be installed correctly, which defer policy checks to runtime. We evaluate Haven on two real tool servers. Have's static analysis is able to discover all security and privacy threats and the addition of runtime techniques allows Haven to admit all compliant tool invocations.</div>
+                </details>
+              </li>
+              <li><strong>ShadowServe: Interference-Free KV Cache Fetching for Distributed Prefix Caching</strong><br><small>Xingyu Xiang (Harvard University)</small>
+                <details class="talk-abstract">
+                  <summary>Abstract</summary>
+                  <div class="abstract-content">Distributed prefix caching accelerates long-context LLM serving by reusing KV cache entries for common context prefixes. However, KV cache fetches can become a bottleneck when network bandwidth is limited. Compression mitigates the bandwidth issue, but can degrade overall performance when decompression interferes with model computation. We present ShadowServe, the first SmartNIC-accelerated, interference-free prefix caching system for LLM serving. ShadowServe separates a control plane on the host and a data plane fully offloaded to the SmartNIC, which eliminates interference to both host GPU and CPU. To overcome the SmartNIC's limited compute and memory resources, we design a chunked pipeline that parallelizes data plane operations across the SmartNIC's compute resources, and a minimal-copy memory management scheme that reduces memory pressure on the SmartNIC. Compared to state-of-the-art solutions, ShadowServe achieves up to 2.2x lower loaded time-per-output-token (TPOT), and reduces time-to-first-token (TTFT) by up to 1.38x in low-bandwidth scenarios (&lt;= 20 Gbps), translating to up to 1.35x higher throughput.</div>
+                </details>
+              </li>
+              <li><strong>Enabling Practical Transparent Checkpointing in HPC</strong><br><small>Yao Xu, Gene Cooperman (Northeastern University)</small>
+                <details class="talk-abstract">
+                  <summary>Abstract</summary>
+                  <div class="abstract-content">Large-scale parallel computing environments including High-Performance Computing (HPC) clusters and massive Deep Learning training systems face a critical challenge in maintaining system resilience and maximizing resource utilization. The increasing scale of computational workloads, often accelerated by GPUs and spanning thousands of nodes, means that a single system failure or even a slow "straggler" node can interrupt or delay the entire job. This result in millions of dollars of wasted compute time. This research will demonstrate an efficient, low-overhead transparent checkpointing mechanism for both MPI and CUDA. This provides the essential stability and resource efficiency required for the evolution of large-scale parallel computing. Transparent checkpointing operates without requiring modifications to application code. This provides system administrators and users with an capability to enable application-independent fault recovery, and flexible job scheduling.</div>
+                </details>
+              </li>
+              <li><strong>Space Efficient Mapping Structures for Learned Indexes</strong><br><small>Anwesha Saha, Aneesh Raman, Ryan Marcus, Manos Athanassoulis (Boston University, University of Pennsylvania)</small>
+                <details class="talk-abstract">
+                  <summary>Abstract</summary>
+                  <div class="abstract-content">Learned indexes are strong competitors to classical indexes like B+ Trees due to efficient query performance and low space utilization. They operate by replacing the internal nodes of the index by a hierarchy of machine learning models that capture the data distribution. However, to achieve the high space savings in practical indexing structures, learned indexes require a sorted version of the underlying data. We therefore explore lightweight mapping structures that can accurately translate the sorted positions predicted by the learned index to its actual physical location in the underlying base data. We explore structures to implement this sorted-to-physical mapping by storing the permutation and balancing the space and time tradeoffs exhibited while implementing such structures. Our initial work explored wavelet tree-based representations of this permutation to reduce memory footprint; but the traditional structure incurred high cache misses due to binary splits at each level. To address these challenges, we introduce a new data structure Constellation Maps which models the permutation in 2-D space. A set of points is represented as (i, p[i]) implying that the i-th sorted element exists at position p[i] in the original data. We encode these points using a set of lines (slope and intercept) along with a small error (a few bits) that can cover all the points. Ultimately, we aim to make learned indexes practically deployable by making theoretically efficient indexing structures practically feasible through structure-aware designs that combine data structures with learning and algorithmic techniques, while preserving learned indexes' space-time advantages in real systems.</div>
+                </details>
+              </li>
+              <li><strong>Beyond the GPU Era: A Quantitative View of AI Accelerators</strong><br><small>Alicia Golden, Carole-Jean Wu, Gu-Yeon Wei, David Brooks (Harvard University, Meta)</small>
+                <details class="talk-abstract">
+                  <summary>Abstract</summary>
+                  <div class="abstract-content">As AI workloads continue to scale, the search for more efficient computation has produced a rapidly diversifying ecosystem of accelerators. Once dominated by GPUs, this landscape now includes specialized architectures such as Cerebras CS-3, SambaNova SN-40, Groq, Gaudi, and TPUv5e, each optimized around distinct design philosophies and performance trade-offs. This talk surveys the current accelerator ecosystem through a quantitative lens, comparing these emerging platforms with state-of-the-art GPUs from NVIDIA and AMD. We examine differences in latency, throughput, power use, energy efficiency, and programmability in order to understand the practical trade-offs that differentiate modern AI accelerators across real workloads.</div>
+                </details>
+              </li>
             </ul>
           </div>
         </div>
@@ -54,29 +122,89 @@
         <div class="slot">
           <div class="slot__time">13:00 – 14:10</div>
           <div class="slot__desc">
-            <strong>Data Systems</strong><br><small>Session Chair: Tianyu Li (MIT and Wisc)</small>
+            <strong>Data Systems</strong><span class="session-chair">Session Chair: Tianyu Li (MIT and Wisc)</span><br>
             <ul>
-              <li><strong>ORQ: Complex Analytics on Private Data with Strong Security Guarantees</strong><br><small>Eli Baum, Sam Buxbaum, Nitin Mathai, Muhammad Faisal, Vasiliki Kalavri, Mayank Varia, John Liagouris (Boston University, UT Austin)</small></li>
-              <li><strong>Adaptive Data Stream Processing on Hybrid Clouds</strong><br><small>Yuanli Wang, Prateek Jain, Lei Huang, Le Xu, Vasiliki Kalavri (Boston University, University of Edinburgh)</small></li>
-              <li><strong>FluidLSM: A Fluid Log-Structured Merge Tree for Shifting Workloads</strong><br><small>Shubham Kaushik, Steven Yang, Subhadeep Sarkar (Brandeis University)</small></li>
-              <li><strong>Eliminating the Hidden Cost of Zone Management in ZNS SSDs</strong><br><small>Teona Bagashvili, Tarikul Islam Papon, Subhadeep Sarkar, Manos Athanassoulis (Boston University, UMass Boston, Brandeis University)</small></li>
-              <li><strong>Tectonic: Bridging Synthetic and Real-World Workloads for Key-Value Benchmarking</strong><br><small>Alexander H. Ott, Shubham Kaushik, Boao Chen, Subhadeep Sarkar (Brandeis University)</small></li>
-              <li><strong>Design and Modeling of a New File Transfer Architecture to Reduce Undetected Errors Evaluated in the FABRIC Testbed</strong><br><small>Prateek Jain, Arash Sarabi, Abraham Matta, Violet Syrotiuk (Boston University, Arizona State University)</small></li>
-              <li><strong>cache_ext: Customizing the Page Cache with eBPF</strong><br><small>Tal Zussman, Ioannis Zarkadas, Jeremy Carin, Andrew Cheng, Hubertus Franke, Jonas Pfefferle, Asaf Cidon (Columbia University, IBM Research)</small></li>
+              <li><strong>ORQ: Complex Analytics on Private Data with Strong Security Guarantees</strong><br><small>Eli Baum, Sam Buxbaum, Nitin Mathai, Muhammad Faisal, Vasiliki Kalavri, Mayank Varia, John Liagouris (Boston University, UT Austin)</small>
+                <details class="talk-abstract">
+                  <summary>Abstract</summary>
+                  <div class="abstract-content">In this talk, I will present ORQ (SOSP'25), a system that enables collaborative analysis of large private datasets using secure multi-party computation. Collaborative analytics are important in a wide array of domains, including socioeconomic research, healthcare, or privacy-preserving telemetry, where users may wish to share their data for analysis while preventing misuse. ORQ protects data against semi-honest or malicious (Byzantine) parties and can efficiently evaluate relational queries with multi-way joins and aggregations that have been considered notoriously expensive under MPC. Secure computation requires obliviousness: control flow and memory access patterns must be independent of the actual data, and can only depend on the input size. ORQ eliminates the quadratic cost of secure joins by leveraging the fact that, in practice, the structure of many real queries allows us to join records and apply the aggregations in a single, combined step, while keeping the result size bounded. We evaluate ORQ in LAN and WAN deployments on a diverse set of workloads, including complex queries with multiple joins and custom aggregations. When compared to state-of-the-art solutions, ORQ significantly reduces execution times and can process one order of magnitude larger datasets. For our most challenging workload, the full TPC-H benchmark, we report results entirely under MPC at Scale Factor 10 — a multi-gigabyte input size that had not yet been achieved, even with information leakage or the use of trusted third parties.</div>
+                </details>
+              </li>
+              <li><strong>Adaptive Data Stream Processing on Hybrid Clouds</strong><br><small>Yuanli Wang, Prateek Jain, Lei Huang, Le Xu, Vasiliki Kalavri (Boston University, University of Edinburgh)</small>
+                <details class="talk-abstract">
+                  <summary>Abstract</summary>
+                  <div class="abstract-content">Dataflow streaming systems, such as Apache Flink and Spark Streaming, are integral to modern business analytics, providing real-time insights across industries. In this paper, we explore how these datacenter-centric platforms can be extended to support emerging hybrid analytics pipelines that ingest data at the edge to drive applications hosted in the cloud. Our goal is to maintain full transparency for user applications, benefit from built-in fault tolerance and out-of-order processing, and leverage years of open-source ecosystem integrations. We introduce an adaptive data stream processing system for hybrid clouds, compatible with dataflow streaming engines. Our key innovations include: (i) a query rewriter that decomposes applications into independent, fault-tolerant segments, (ii) a dynamic routing mechanism that allows shifting computations between edge and cloud resources without downtime, and (iii) a dynamic routing policy that provides continuous adaptability to variable operating conditions and workloads. We implement the system on Apache Flink and evaluate it on a physical testbed with Raspberry Pi devices, as well as on a large simulated testbed of 100 VMs. Across five real-world applications, our results show that our system seamlessly shifts computations between edge and cloud, while consistently achieving higher throughput than baseline systems.</div>
+                </details>
+              </li>
+              <li><strong>FluidLSM: A Fluid Log-Structured Merge Tree for Shifting Workloads</strong><br><small>Shubham Kaushik, Steven Yang, Subhadeep Sarkar (Brandeis University)</small>
+                <details class="talk-abstract">
+                  <summary>Abstract</summary>
+                  <div class="abstract-content">Log-structured merge (LSM) trees are widely used in modern key-value stores to support high write throughput and competitive query performance. Different LSM-tree configurations are suited to different workload regimes: leveled LSM-trees favor read-heavy workloads, while tiered LSM-trees perform best under write-heavy workloads. However, real-world workloads frequently exhibit dynamic, diurnal, and bursty patterns, and a single static configuration cannot provide consistently optimal performance over time. Reconfiguring an LSM-tree typically requires restarting or reorganizing the storage engine, which introduces downtime, delays, and significant operational overhead. In this work, we introduce FluidLSM, an adaptive LSM-tree that continuously monitors workload characteristics and dynamically transitions between internal LSM shapes. FluidLSM adjusts parameters at each level, such as size ratios, the number of runs (for tiered levels), compaction and file-picking policies, compression settings, and write-buffer (memtable) implementation and sizes, at runtime without requiring system restarts. By fluidly adapting to changing workload conditions, FluidLSM provides more stable performance, reduces write amplification during ingestion bursts, and improves read efficiency during query-intensive periods.</div>
+                </details>
+              </li>
+              <li><strong>Eliminating the Hidden Cost of Zone Management in ZNS SSDs</strong><br><small>Teona Bagashvili, Tarikul Islam Papon, Subhadeep Sarkar, Manos Athanassoulis (Boston University, UMass Boston, Brandeis University)</small>
+                <details class="talk-abstract">
+                  <summary>Abstract</summary>
+                  <div class="abstract-content">Zoned Namespace (ZNS) SSDs represent a paradigm shift in flash-based drives, transferring the responsibility of space management from the device to the host. This leads to benefits such as lower write amplification, high data placement flexibility, and reduced garbage collection overhead. ZNS provides these benefits by introducing a zoned interface, where the host writes data to the zone sequentially. The ZNS standard describes how zones should be managed on the host side, however, the implementation of zone allocation and management within the controller is left to device manufacturers. In this work, we identify that the key challenge in zone allocation is balancing throughput, device-level write amplification, and controller resources such as memory and allocation latency. We propose SilentZNS, a device-level zone management strategy that allocates resources to the logical zone on demand. SilentZNS (i) represents storage as a set of storage elements (erase blocks or collections of erase blocks), (ii) allows configuring the zone geometry, and (iii) issues dummy writes only to storage elements that are (partially) written. With SilentZNS, we evaluate the full spectrum of physical-zone allocation strategies and empirically identify configurations that minimize device-level write amplification while maintaining high throughput and acceptable allocation overhead.</div>
+                </details>
+              </li>
+              <li><strong>Tectonic: Bridging Synthetic and Real-World Workloads for Key-Value Benchmarking</strong><br><small>Alexander H. Ott, Shubham Kaushik, Boao Chen, Subhadeep Sarkar (Brandeis University)</small>
+                <details class="talk-abstract">
+                  <summary>Abstract</summary>
+                  <div class="abstract-content">The storage engines play a critical role in modern data systems—ranging from NoSQL systems like Rocksdb and DynamoDB to SQL systems like CockroachDB—which primarily rely on Log-Structured Merge-trees (LSM) and Key-Value stores. As these systems are deployed in a variety of emerging applications, the workloads they experience have grown increasingly complex, often showing dynamic behaviors such as operation shifts, different key distributions, and various degrees of data ingestion order. However, existing state-of-the-art key-value benchmarks, including YCSB, KVBench, and db_bench, are mostly static. They lack the feature to simulate dynamic workloads where the mix and pattern of database operations change unpredictably over time. To address these concerns, we propose Tectonic, a high-performance workload generator implemented in Rust. Tectonic is architected to model real-world data access by (i) supporting dynamic workload shifts, where operations and distributions change over time; (ii) accurate control over composite key generation; (iii) configurable data access patterns for common database operations ranging from inserts to point and range deletes; and (iv) configurable data sortedness when generating workloads. Our experiment results demonstrate that Tectonic achieves up to 2 times higher throughput and 84% reduction in memory footprint compared to state-of-the-art workload generators.</div>
+                </details>
+              </li>
+              <li><strong>Design and Modeling of a New File Transfer Architecture to Reduce Undetected Errors Evaluated in the FABRIC Testbed</strong><br><small>Prateek Jain, Arash Sarabi, Abraham Matta, Violet Syrotiuk (Boston University, Arizona State University)</small>
+                <details class="talk-abstract">
+                  <summary>Abstract</summary>
+                  <div class="abstract-content">Ensuring the integrity of petabyte-scale file transfers is essential for the data gathered from scientific instruments. As packet sizes increase, so does the likelihood of errors, resulting in a higher probability of undetected errors in the packet. This paper presents a Multi-Level Error Detection (MLED) framework that leverages in-network resources to reduce undetected error probability (UEP) in file transmission. MLED is based on a configurable recursive architecture that organizes communication in layers at different levels, decoupling network functions such as error detection, routing, addressing, and security. The recursive structure of MLED is analyzed and it shows that adding additional levels of error detection reduces the overall UEP. Through experimentation using the FABRIC testbed the traditional approach, with transport- and data link- layer error detection, results in a corrupt file transfer requiring retransmission of the entire file. Using its recursive structure, an implementation of MLED detects and corrects these adversarial errors at intermediate levels inside the network, avoiding file retransmission under non-zero error rates. MLED therefore achieves a 100% gain in goodput over the traditional approach, reaching a goodput of over 800 Mbps on a single connection with no appreciable increase in delay.</div>
+                </details>
+              </li>
+              <li><strong>cache_ext: Customizing the Page Cache with eBPF</strong><br><small>Tal Zussman, Ioannis Zarkadas, Jeremy Carin, Andrew Cheng, Hubertus Franke, Jonas Pfefferle, Asaf Cidon (Columbia University, IBM Research)</small>
+                <details class="talk-abstract">
+                  <summary>Abstract</summary>
+                  <div class="abstract-content">The OS page cache is central to the performance of many applications, by reducing excessive accesses to storage. However, its one-size-fits-all eviction policy performs poorly in many workloads. While the systems community has experimented with new and adaptive eviction policies in non-OS settings (e.g., key-value stores, CDNs), it is very difficult to implement such policies in the kernel. To address these shortcomings, we design a flexible eBPF-based framework for the Linux page cache, called cache_ext, that allows developers to customize the page cache without modifying the kernel. cache_ext enables applications to customize the page cache policy for their specific needs, while also ensuring that different applications' policies do not interfere with each other and preserving the page cache's ability to share memory across different processes. We demonstrate the flexibility of cache_ext's interface by using it to implement eight different policies, including sophisticated eviction algorithms. Our evaluation shows that it is indeed beneficial for applications to customize the page cache to match their workloads' unique properties, and that they can achieve up to 70% higher throughput and 58% lower tail latency.</div>
+                </details>
+              </li>
             </ul>
           </div>
         </div>
         <div class="slot">
           <div class="slot__time">14:10 – 15:00</div>
           <div class="slot__desc">
-            <strong>Reliability and Security</strong><br><small>Session Chair: Nikos Vasilakis (Brown University)</small>
+            <strong>Reliability and Security</strong><span class="session-chair">Session Chair: Nikos Vasilakis (Brown University)</span><br>
             <ul>
-              <li><strong>Above the Clouds: New Software Challenges in Space Computing</strong><br><small>Haoda Wang, Asaf Cidon, Junfeng Yang (Columbia University)</small></li>
-              <li><strong>Effective and Efficient Specification Mining for Opaque Software Components</strong><br><small>Evangelos Lamprou (Brown University)</small></li>
-              <li><strong>From Device Passthrough to Host Passout</strong><br><small>Chathura Rajapaksha, Sandhya Koteshwara, Apoorve Mohan, Hubertus Franke, Bandan Das, Ajay Joshi, Manuel Egele (Boston University, IBM Research, Red Hat)</small></li>
-              <li><strong>Cross-VM Page Cache Attacks: gVisor and Beyond</strong><br><small>Fredrik Wilke, Alexander Choi (Boston University)</small></li>
-              <li><strong>Exploiting Side-Channel Vulnerabilities in Peripheral Device Chaining</strong><br><small>Claudia Pacori, Kyungtae Kim (Dartmouth College)</small></li>
-              
+              <li><strong>Above the Clouds: New Software Challenges in Space Computing</strong><br><small>Haoda Wang, Asaf Cidon, Junfeng Yang (Columbia University)</small>
+                <details class="talk-abstract">
+                  <summary>Abstract</summary>
+                  <div class="abstract-content">Satellite-backed services have become an essential component of everyday life, in areas such as navigation, Internet connectivity, and imaging. The collapsing cost of launching to space has disrupted the way satellites are deployed, shifting the industry from a model of few expensive fault-tolerant high-orbit satellites to arrays of commodity low-cost SmallSats in low-Earth orbit. However, satellite software hasn't kept up with the hardware trends, and missions are still using the ad-hoc flight software infrastructure built for expensive one-off missions in high-altitude orbits, wherein operators manually control each satellite individually. This approach is woefully inadequate in the new emerging SmallSat operational model, where an operator needs to manage hundreds of "wimpy" satellites with varying hardware capabilities under intermittent communication. Furthermore, SmallSat operators increasingly "rent out" their infrastructure to third parties, and need to support the workloads of multiple different tenants on the same satellites, which raises the classic problems of isolation and security similar to cloud computing, but in the much more constrained hardware environment of space. In this talk, we outline significant challenges in this transitional time for space exploration, from the challenges of radiation hardening commodity hardware to ensuring isolation and security on resource-constrained devices.</div>
+                </details>
+              </li>
+              <li><strong>Effective and Efficient Specification Mining for Opaque Software Components</strong><br><small>Evangelos Lamprou (Brown University)</small>
+                <details class="talk-abstract">
+                  <summary>Abstract</summary>
+                  <div class="abstract-content">A wealth of state-of-the-art systems demonstrate impressive improvements in performance, security, and reliability while operating on programs composed of opaque components. To reason about such components, these systems require partial specifications that describe key component properties relevant to the system's target analysis. However, creating such specifications is a manual, laborious, and error-prone process, limiting the practicality and wider adoption of these systems. My talk will present Caruca, a system for automatic specification mining for opaque components, focusing on programs invoked as commands in a shell-like environment. Caruca first instruments a large language model to translate a command's user-facing documentation into a structured invocation syntax. Using this representation, it explores the space of syntactically valid command invocations and execution environments. It then concretely executes each command-environment pair, interposing at the system-call and filesystem level to extract key command properties such as parallelizability and filesystem pre- and post-conditions. These properties can be exported in multiple specification formats and are immediately usable by existing systems. Caruca already powers the full specifications for a state-of-the-art static analysis tool. I will also present the kinds of specifications it can generate for systems like PaSh (OSDI'22), Shellcheck, and OpenAI's Codex AI assistant.</div>
+                </details>
+              </li>
+              <li><strong>From Device Passthrough to Host Passout</strong><br><small>Chathura Rajapaksha, Sandhya Koteshwara, Apoorve Mohan, Hubertus Franke, Bandan Das, Ajay Joshi, Manuel Egele (Boston University, IBM Research, Red Hat)</small>
+                <details class="talk-abstract">
+                  <summary>Abstract</summary>
+                  <div class="abstract-content">Cloud providers increasingly offer bare-metal instances and GPU nodes with full PCI(e) device passthrough to support demanding AI and HPC workloads. While this approach delivers native performance, it also exposes low-level device configuration interfaces directly to tenant software with minimal oversight. We reveal a critical cross-layer reliability issue: tenant-accessible PCI(e) configuration-space operations can trigger system-wide failures that escape device boundaries and manifest as platform-level Reliability, Availability, and Serviceability (RAS) errors. These failures arise from interactions between undocumented device registers, fragile hardware state transitions, and inconsistent platform error handling, creating a gap between assumed device isolation and actual failure propagation. Using a systematic configuration-space exploration approach, we reproduced these failures across multiple device classes (GPUs, NVMe drives, network adapters) in production-grade server platforms. We demonstrate that hardware-enforced isolation alone is insufficient for RAS guarantees when configuration interfaces remain unvalidated. As a practical countermeasure, we show how hypervisor-level filtering can block unsafe operations while maintaining device functionality.</div>
+                </details>
+              </li>
+              <li><strong>Cross-VM Page Cache Attacks: gVisor and Beyond</strong><br><small>Fredrik Wilke, Alexander Choi (Boston University)</small>
+                <details class="talk-abstract">
+                  <summary>Abstract</summary>
+                  <div class="abstract-content">Containerization has become the backbone of modern cloud computing, offering lightweight isolation and strong security guarantees. User-space kernels such as gVisor aim to enhance these guarantees by mediating system calls and implementing kernel functionality entirely in user space, thereby reducing the host kernel attack surface. However, we show that host-level page-cache side channels persist even under gVisor's multi-layered architecture. In this work, we extend the methodology of page cache attacks to gVisor and demonstrate a covert channel that traverses the unprivileged container process, the gVisor Sentry, the Gofer, and the host kernel, exploiting timing differences in shared filesystem page accesses. We evaluate the channel across both the gVisor execution backends—systrap and KVM—and also compare its behavior against a traditional QEMU+KVM Alpine Linux VM. Across all platforms, we show that rdtsc-based timing differences induced by host page-cache residency remain measurable, reliable, and sufficient to encode information across isolation boundaries. Our findings reveal that neither trap-based system call mediation nor hardware-isolated user-space kernels eliminate page-cache timing leakage.</div>
+                </details>
+              </li>
+              <li><strong>Exploiting Side-Channel Vulnerabilities in Peripheral Device Chaining</strong><br><small>Claudia Pacori, Kyungtae Kim (Dartmouth College)</small>
+                <details class="talk-abstract">
+                  <summary>Abstract</summary>
+                  <div class="abstract-content">Modern high-speed peripheral interconnects integrate data transport and power delivery over a shared physical link, enabling daisy-chained configurations where multiple devices draw from the same channel. We show that an external, non-intrusive adversary controlling a downstream peripheral can infer upstream host activity, including machine-learning inference, web browsing, and keystroke events, using only low-rate power measurements. Despite coarse sampling and concurrent device activity, simple sequence-based learning models are sufficient to distinguish workloads across both single-device and chained setups. Our results show that, over Thunderbolt, website activity can be fingerprinted from coarse power traces with up to 92% accuracy. This exposes an attack surface that bypasses conventional software and DMA-level defenses.</div>
+                </details>
+              </li>
+
             </ul>
           </div>
         </div>
@@ -87,26 +215,76 @@
         <div class="slot">
           <div class="slot__time">15:20 – 16:20</div>
           <div class="slot__desc">
-            <strong>Distributed Systems</strong><br><small>Session Chair: Vasiliki Kalavri (Boston University)</small>
+            <strong>Distributed Systems</strong><span class="session-chair">Session Chair: Vasiliki Kalavri (Boston University)</span><br>
             <ul>
-              <li><strong>Owl: Handling Cross-Service Performance Issue in Production Cloud Systems</strong><br><small>Wenbo Qian, Yile Gu, Yuhan Yao, Baris Kasikci, Ze Li, Murali Chintalapati, Yigong Hu (Boston University, University of Washington, Microsoft)</small></li>
-              <li><strong>Compositional Model-Driven Verification of Weakly Consistent Distributed Systems</strong><br><small>Bryant Curto, Ji-Yong Shin (Northeastern University)</small></li>
-              <li><strong>Millisecond Time Synchronization for 5G NB-IoT Networks</strong><br><small>Muhammad Abdullah Soomro, Muhammad Shayan Nazeer, Collin DelSignore, Yasra Chandio, Fatima Anwar, Taqi Raza (University of Massachusetts Amherst)</small></li>
-              <li><strong>Beyond Lamport, Towards Probabilistic Fair Ordering</strong><br><small>Muhammad Haseeb, Jinkun Geng, Radhika Mittal, Aurojit Panda, Srinivas Narayana, Anirudh Sivaraman (NYU, Stanford University, UIUC, Rutgers University)</small></li>
-              <li><strong>Oasis: Pooling PCIe Devices Over CXL to Boost Utilization</strong><br><small>Yuhong Zhong (Columbia University)</small></li>
-              <li><strong>Revisiting Speculative Leaderless Protocols for Low-Latency BFT Replication</strong><br><small>Daniel Qian (New York University)</small></li>
+              <li><strong>Owl: Handling Cross-Service Performance Issue in Production Cloud Systems</strong><br><small>Wenbo Qian, Yile Gu, Yuhan Yao, Baris Kasikci, Ze Li, Murali Chintalapati, Yigong Hu (Boston University, University of Washington, Microsoft)</small>
+                <details class="talk-abstract">
+                  <summary>Abstract</summary>
+                  <div class="abstract-content">Modern cloud systems consist of many independent services that interact through diverse way, making performance issues increasingly driven by unexpected cross service behavior. Such cross service performance issues are difficult to detect because they emerge slowly, produce weak signals, and often manifest in a different service than the one that causes them. Diagnosing these issues is even harder, as developers must reason about semantic relationships between services that are not captured by traditional tracing or causality tools. We present Owl, an end-to-end service for detecting and diagnosing cross service performance issues at cloud scale. Owl first performs lightweight detection using coarse performance signals and then collects targeted logs from affected nodes. From these logs, Owl reconstructs interaction relationships by identifying event pairs that reflect how two services coordinate through a resource. By comparing interaction patterns from buggy traces with those from normal traces, Owl identifies the semantic deviation that reveals the responsible service. Owl has been deployed in production in CloudX for over three years, where it has reported hundreds of cross service performance issues and diagnosis time was reduced by 76%.</div>
+                </details>
+              </li>
+              <li><strong>Compositional Model-Driven Verification of Weakly Consistent Distributed Systems</strong><br><small>Bryant Curto, Ji-Yong Shin (Northeastern University)</small>
+                <details class="talk-abstract">
+                  <summary>Abstract</summary>
+                  <div class="abstract-content">Despite abundant distributed system verification work, weakly consistent distributed systems have been overlooked as formal verification targets. Verification methodologies starting from the code level face scalability challenges when verifying weakly consistent distributed systems as these systems employ a wide variety of similar semantics and designs, potentially leading to redundant verification work. This paper presents our ongoing work to develop Moveri, a top-down verification framework for weakly consistent distributed systems. It aims to reduce the effort needed to verify this commonly overlooked class of safety-critical systems. Moveri is based on novel compositional and operational models of sixteen different consistency semantics including eventual consistency, four session guarantees, and causal consistency. The implementation-agnostic semantic models connect to templated distributed protocol models and further to different verified implementations through refinement. Verification of the safety of weakly consistent distributed system protocols and implementations is made more practical by the flexibility of our templated distributed protocol models.</div>
+                </details>
+              </li>
+              <li><strong>Millisecond Time Synchronization for 5G NB-IoT Networks</strong><br><small>Muhammad Abdullah Soomro, Muhammad Shayan Nazeer, Collin DelSignore, Yasra Chandio, Fatima Anwar, Taqi Raza (University of Massachusetts Amherst)</small>
+                <details class="talk-abstract">
+                  <summary>Abstract</summary>
+                  <div class="abstract-content">5G NB-IoT is a leading low-power cellular technology, but it frequently delivers poor time synchronization due to the protocol stack introducing non-deterministic and asymmetric delays (such as scheduling, uplink reliability, and deep-sleep wake-up latency), while low-cost oscillators add unpredictable drift. These effects can accumulate into tens to hundreds of milliseconds of timing error, breaching the assumptions behind protocols like NTP. This talk characterises the sources of timing error in commercial 5G NB-IoT and describes SynchroNB, which combines lightweight prediction with cross-layer control to schedule modem wake-ups, reserve uplink resources when necessary, manage degraded links, and prioritise synchronization traffic at the MAC layer. Deployed on commercial hardware over a live network, SynchroNB achieves single-millisecond accuracy while using 36% radio-on time and 25% bandwidth compared to an NTP baseline.</div>
+                </details>
+              </li>
+              <li><strong>Beyond Lamport, Towards Probabilistic Fair Ordering</strong><br><small>Muhammad Haseeb, Jinkun Geng, Radhika Mittal, Aurojit Panda, Srinivas Narayana, Anirudh Sivaraman (NYU, Stanford University, UIUC, Rutgers University)</small>
+                <details class="talk-abstract">
+                  <summary>Abstract</summary>
+                  <div class="abstract-content">A growing class of applications demands fair ordering of events, which ensures that events generated earlier are processed before later events. However, achieving such sequencing is challenging due to the inherent errors in clock synchronization: two events at two clients generated close together may have timestamps that cannot be compared confidently. We advocate for an approach that embraces, rather than eliminates, clock synchronization errors. Instead of attempting to remove the error from a timestamp, our proposed system leverages a statistical model to compare two noisy timestamps probabilistically by learning per-clock synchronization error distributions. Our preliminary statistical model computes the probability that one event precedes another by only relying on local clocks of clients. This serves as a foundation for a new relation: likely-happened-before where the probability represents the likelihood that an event happened before another. This relation provides a basis for ordering multiple events which are otherwise considered concurrent by Lamport's happened-before relation. We outline several research directions: online fair sequencing, stochastically fair total ordering, and handling byzantine clients.</div>
+                </details>
+              </li>
+              <li><strong>Oasis: Pooling PCIe Devices Over CXL to Boost Utilization</strong><br><small>Yuhong Zhong (Columbia University)</small>
+                <details class="talk-abstract">
+                  <summary>Abstract</summary>
+                  <div class="abstract-content">PCIe devices, such as NICs and SSDs, are frequently underutilized in cloud platforms. PCIe device pools, in which multiple hosts can share a set of PCIe devices, could increase PCIe device utilization and reduce their total cost of ownership. The main way to achieve PCIe device pools today is via PCIe switches, but they are expensive and inflexible. We design Oasis, a system that pools PCIe devices in software over CXL memory pools. CXL memory pools are already being deployed to boost datacenter memory utilization and reduce costs. Once CXL pools are in place, they can serve as an efficient data path between hosts and PCIe devices. Oasis provides a control plane and datapath over CXL pools, mapping and routing PCIe device traffic across host boundaries. PCIe devices with different functionalities can be supported by adding an Oasis engine for each device class. We implement an Oasis network engine to demonstrate NIC pooling. Our evaluation shows that Oasis improves the NIC utilization by 2x and handles NIC failover with only a 38 ms interruption.</div>
+                </details>
+              </li>
+              <li><strong>Revisiting Speculative Leaderless Protocols for Low-Latency BFT Replication</strong><br><small>Daniel Qian (New York University)</small>
+                <details class="talk-abstract">
+                  <summary>Abstract</summary>
+                  <div class="abstract-content">Many recently proposed Byzantine Fault Tolerant consensus protocols employ an optimistic fast path, allowing them to quickly return results during fault-free, synchronous, periods. In the extreme, some leaderless protocols can even provide a 2 message delay fast path, where a client broadcasts their request directly to the replicas and immediately learns the result once it receives enough replies. However, such a fast path is only possible if there is no contention: concurrent requests cause replicas to diverge and trigger costly recovery procedures. In this work, we present Aspen, a leaderless BFT protocol that achieves a near-optimal latency. Aspen removes the no-contention assumption by utilizing a best-effort sequencing layer based on loosely synchronized clocks and network delay estimates. Aspen uses n = 3f + 2p + 1 replicas to tolerate f Byzantine nodes, while allowing the fast path to proceed even if p replicas diverge due to unpredictable network delays. When optimistic conditions do not hold, Aspen safely falls back to a PBFT-style recovery path, guaranteeing safety and liveness under partial synchrony. In experiments with wide-area distributed replicas, Aspen commits requests in less than 75ms—a 1.25–3.3x improvement compared to other leading low latency BFT protocols—while supporting up to 19,000 requests per second.</div>
+                </details>
+              </li>
             </ul>
           </div>
         </div>
         <div class="slot">
           <div class="slot__time">16:20 – 17:00</div>
           <div class="slot__desc">
-            <strong>Machine Learning Systems II</strong><br><small>Session Chair: Juncheng Yang (Harvard University)</small>
+            <strong>Machine Learning Systems II</strong><span class="session-chair">Session Chair: Juncheng Yang (Harvard University)</span><br>
             <ul>
-              <li><strong>FailLite: Failure-Resilient Model Serving for Resource-Constrained Edge Environments</strong><br><small>Li Wu, Walid Hanafy, Tarek Abdelzaher, David Irwin, Jesse Milzman, Prashant Shenoy (University of Massachusetts Amherst, UIUC, Army Research Laboratory)</small></li>
-              <li><strong>Scaling Agentic AI Workflows on Unified Memory Workstations via SSD-Based KV Cache Management</strong><br><small>Sakshi Sharma, Yuhang Song, Yuanli Wang, Vasiliki Kalavri (Boston University)</small></li>
-              <li><strong>Exploring Dynamic Off-Loading of Execution to Neural Networks</strong><br><small>CJ Parra, Jonathan Appavoo (Boston University)</small></li>
-              <li><strong>TrustWeave: Runtime Attestation for LLM Agent Systems</strong><br><small>Jianchang Su, Wei Zhang (University of Connecticut)</small></li>
+              <li><strong>FailLite: Failure-Resilient Model Serving for Resource-Constrained Edge Environments</strong><br><small>Li Wu, Walid Hanafy, Tarek Abdelzaher, David Irwin, Jesse Milzman, Prashant Shenoy (University of Massachusetts Amherst, UIUC, Army Research Laboratory)</small>
+                <details class="talk-abstract">
+                  <summary>Abstract</summary>
+                  <div class="abstract-content">Model serving systems have become popular for deploying deep learning models for various latency-sensitive inference tasks. While traditional replication-based methods have been used for failure-resilient model serving in the cloud, such methods are often infeasible in edge environments due to significant resource constraints that preclude full replication. To address this problem, this paper presents FailLite, a failure-resilient model serving system that employs (i) a heterogeneous replication where the failover model is a smaller variant of the original one, (ii) an intelligent approach that uses warm replicas to ensure quick failover for critical applications while using cold replicas, and (iii) progressive failover to provide low mean time to recovery (MTTR) for the remaining applications. We implement a full prototype of our system and demonstrate its efficacy on an experimental edge testbed and large-scale simulations. Our results using 27 models show that FailLite can recover all failed applications with 2x lower MTTR and only a 0.6% reduction in accuracy. Under extreme failure scenarios, where 50% of edge sites fail simultaneously, FailLite improves recovery rate by at least 39.3% compared to the baseline methods.</div>
+                </details>
+              </li>
+              <li><strong>Scaling Agentic AI Workflows on Unified Memory Workstations via SSD-Based KV Cache Management</strong><br><small>Sakshi Sharma, Yuhang Song, Yuanli Wang, Vasiliki Kalavri (Boston University)</small>
+                <details class="talk-abstract">
+                  <summary>Abstract</summary>
+                  <div class="abstract-content">Large Language Model (LLM) based agents are evolving into complex systems requiring multi-turn reasoning and multi-agent coordination, which generate massive KV cache footprints that often exceed the capacity of a single GPU. While unified memory platforms (e.g., NVIDIA DGX Spark) offer large shared memory pools, existing serving frameworks like vLLM fail to effectively utilize them because their CPU-offloading strategies provide no additional capacity in architectures where CPU and GPU share the same memory budget. To address this bottleneck, we propose a novel KV cache management system that introduces an SSD storage tier utilizing NVIDIA GPUDirect Storage (GDS) for high-performance offloading. Our system implements two key optimizations: (1) an I/O-aware mechanism that uses a contiguous staging buffer to coalesce scattered KV blocks, converting slow random I/O into efficient sequential reads/writes; and (2) a workflow-aware caching policy that analyzes agent execution graphs to proactively offload cold data during idle windows (e.g., tool execution) and prefetch context for upcoming steps. This approach effectively extends the memory hierarchy, making the local deployment of long-context, multi-agent workflows feasible on personal AI workstations.</div>
+                </details>
+              </li>
+              <li><strong>Exploring Dynamic Off-Loading of Execution to Neural Networks</strong><br><small>CJ Parra, Jonathan Appavoo (Boston University)</small>
+                <details class="talk-abstract">
+                  <summary>Abstract</summary>
+                  <div class="abstract-content">Building on prior work in automatically scalable computation and Neuromorphic computing, we explore the potential for today's neural networks to learn a representation of deterministic computation. Even as computers grow in size and complexity, the fundamental operation stays the same. A system repeatedly executes the same instructions in a program, over and over again, with exact precision, and never learns from its past. Our brains work differently—they grow, evolve, and adapt. The more they do something, the better they get at doing it. If you could mix these traits into our deterministic machines, you would be able to improve a computer, not only in its size and complexity, but in its inherent ability. This study is a step in exploring this conjecture. We start by representing the complete state of a computer, at any moment, as a state vector - a low-level bit vector composed of the system's memory and register contents. Using this representation, we aim to quantify whether neural networks can be trained on this low-level data to predict future states of computation. The ultimate objective is to provide future systems with the ability to identify shortcuts and alternative execution paths, allowing them to automatically improve and adapt beyond their deterministic limitations.</div>
+                </details>
+              </li>
+              <li><strong>TrustWeave: Runtime Attestation for LLM Agent Systems</strong><br><small>Jianchang Su, Wei Zhang (University of Connecticut)</small>
+                <details class="talk-abstract">
+                  <summary>Abstract</summary>
+                  <div class="abstract-content">The rise of multi-cloud deployed multi-agent systems powered by LLMs introduces critical security challenges for modern cloud environments. While Intel TDX–based Confidential Virtual Machines provide strong isolation and boot-time attestation, they lack dynamic runtime integrity verification—a capability essential for trusted agent systems that frequently load new models and coordinate across distributed services. To address this gap, we present TrustWeave, a runtime integrity measurement and attestation framework that extends the Linux Integrity Measurement Architecture with support for Intel TDX's Runtime Measurement Registers. TrustWeave enables userspace attestation of dynamically loaded agent components throughout their lifecycle, providing stronger runtime trust guarantees for secure and scalable LLM agent deployments. Our key innovation is a workload-aware filtering mechanism that reduces measurement overhead by 99.95% while preserving comprehensive security coverage for agent-critical operations. Our evaluation on production agent workloads using five models (0.6B-14B parameters) demonstrates practical performance: 0.8-12.8% boot overhead (reducible to &lt;10% with filtering), TTFT degradation around 25% of baseline, and stable QPS scaling up to 32 concurrent requests.</div>
+                </details>
+              </li>
             </ul>
           </div>
         </div>
@@ -118,6 +296,4 @@
     </main>
     <div data-include="partials/footer.html"></div>
   </body>
-  </html>
-
-
+</html>
